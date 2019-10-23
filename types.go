@@ -32,6 +32,7 @@ func (a TONAccountAddress) GetHEXAddress() string {
 	return fmt.Sprintf("%x", data)
 }
 
+// InputKey input key
 type InputKey struct {
 	LocalPassword string        `json:"local_password"`
 	Key           TONPrivateKey `json:"key"`
@@ -81,12 +82,12 @@ type TONConfig struct {
 
 // TONConfigServer liteservers and validator
 type TONConfigServer struct {
-	Liteservers []TONLiteservierConfig `json:"liteservers"`
-	Validator   ValidatorConfig        `json:"validator"`
+	Liteservers []TONLiteserverConfig `json:"liteservers"`
+	Validator   ValidatorConfig       `json:"validator"`
 }
 
-// TONLiteservierConfig Liteserver params
-type TONLiteservierConfig struct {
+// TONLiteserverConfig Liteserver params
+type TONLiteserverConfig struct {
 	Type string            `json:"@type"`
 	Ip   int64             `json:"ip"`
 	Port string            `json:"port"`
@@ -189,6 +190,7 @@ type TONPrivateKeyResponse struct {
 	TONPrivateKey
 }
 
+// TONSyncState sync last state
 type TONSyncState struct {
 	FromSeqno    int `json:"from_seqno"`
 	ToSeqno      int `json:"to_seqno"`
@@ -205,6 +207,7 @@ func (k TONPrivateKey) getInputKey(password []byte) InputKey {
 	}
 }
 
+// TONEncryptedKey encrypted key
 type TONEncryptedKey struct {
 	Data string `json:"data"`
 }
